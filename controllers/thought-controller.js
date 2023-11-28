@@ -2,6 +2,15 @@ const path = require('path');
 const { User, Thought } = require(path.join(__dirname, '../models'));
 
 const thoughtController = {
+  async getAllThoughts(req, res){
+    try{
+      const thoughtdb=await Thought.find();
+      res.json(thoughtdb);
+    }catch(err){
+      console.log(err);
+      res.status(500).json(err);
+    }
+  },
 
   createReaction({ params, body }, res) {
     Thought.findByIdAndUpdate(
