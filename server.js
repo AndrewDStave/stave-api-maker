@@ -11,11 +11,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/users', require('./routes/api/user-routes'));
 app.use('/api/thoughts', require('./routes/api/thought-routes'));
 
-mongoose.connect('mongodb://localhost/socialnetwork', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
+app.get('/', (req, res) => {
+  res.send('Brand new API!');
 });
 
 app.listen(PORT, () => {
